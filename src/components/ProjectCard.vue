@@ -10,15 +10,15 @@ const image = props.project.image || projectFallbackImage
     <div class="aspect-[16/10] w-full overflow-hidden bg-gray-200 dark:bg-gray-800">
       <img :src="image" alt="project screenshot" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" loading="lazy" />
     </div>
-    <div class="flex h-full flex-col gap-3 p-5">
-      <h3 class="text-lg font-semibold tracking-tight text-slate-900 dark:text-white">{{ project.title }}</h3>
+    <div class="flex h-full flex-col gap-4 p-4 sm:p-5">
+      <h3 class="text-base font-semibold tracking-tight text-slate-900 dark:text-white sm:text-lg">{{ project.title }}</h3>
       <p class="text-sm leading-relaxed text-slate-600 dark:text-gray-400">{{ project.description }}</p>
       <div class="flex flex-wrap gap-2">
         <span v-for="t in project.tech" :key="t" class="rounded-full border border-slate-300 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-slate-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200">{{ t }}</span>
       </div>
-      <div class="mt-auto flex gap-4 pt-2">
-        <a :href="project.live" target="_blank" rel="noreferrer" class="text-sm font-medium text-slate-900 underline underline-offset-4 transition hover:opacity-70 dark:text-white">Live</a>
-        <a :href="project.github" target="_blank" rel="noreferrer" class="text-sm font-medium text-slate-900 underline underline-offset-4 transition hover:opacity-70 dark:text-white">GitHub</a>
+      <div class="mt-auto flex flex-col gap-2 pt-1 sm:flex-row">
+        <a :href="project.live" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-900 transition hover:-translate-y-0.5 hover:bg-slate-100 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700">Live</a>
+        <a :href="project.github" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-900 transition hover:-translate-y-0.5 hover:bg-slate-100 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700">GitHub</a>
       </div>
     </div>
   </article>
