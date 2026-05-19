@@ -1,14 +1,16 @@
+<script setup>
+import SectionHeader from '../components/SectionHeader.vue'
+import ActionButton from '../components/ActionButton.vue'
+</script>
+
 <template>
   <section id="contact" class="space-y-4 rounded-3xl border border-slate-200 bg-white p-5 transition-colors duration-300 dark:border-gray-700 dark:bg-gray-800 sm:p-8 lg:p-10">
-    <div class="border-b border-slate-200 pb-4 dark:border-gray-700">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-gray-400">Contact</p>
-      <h2 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-3xl">Let’s connect</h2>
-    </div>
+    <SectionHeader eyebrow="Contact" title="Let’s connect" />
     <p class="text-sm leading-relaxed text-slate-600 dark:text-gray-400 sm:text-base">Open to frontend and full-stack opportunities.</p>
     <div class="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap">
-      <a href="mailto:bonanaxbona@gmail.com" class="inline-flex w-full items-center justify-center rounded-2xl bg-black px-5 py-3 text-sm font-medium text-white transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-gray-900 dark:hover:bg-black sm:w-auto">Email Me</a>
-      <a href="https://www.facebook.com/bonanax.bona.3" target="_blank" rel="noreferrer" class="inline-flex w-full items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-medium text-slate-800 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700 sm:w-auto">Facebook</a>
-      <a href="https://www.linkedin.com/in/adrian-lylle-bona-540a3a242/" target="_blank" rel="noreferrer" class="inline-flex w-full items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-medium text-slate-800 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700 sm:w-auto">LinkedIn</a>
+      <ActionButton href="mailto:bonanaxbona@gmail.com" class="w-full sm:w-auto">Email Me</ActionButton>
+      <ActionButton href="https://www.facebook.com/bonanax.bona.3" variant="secondary" class="w-full sm:w-auto">Facebook</ActionButton>
+      <ActionButton href="https://www.linkedin.com/in/adrian-lylle-bona-540a3a242/" variant="secondary" class="w-full sm:w-auto">LinkedIn</ActionButton>
     </div>
   </section>
 </template>
