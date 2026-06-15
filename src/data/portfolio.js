@@ -1,39 +1,81 @@
 import project1Image from '../assets/images/project1.png'
 import project2Image from '../assets/images/project2.jpg'
-import project3Image from '../assets/images/project3.jpg'
 
 export const projects = [
   {
-    title: 'E-commerce Premium Accounts',
-    description: 'A premium accounts e-commerce platform focused on clear browsing, smooth checkout, and dependable user flows.',
-    tech: ['WordPress', 'WooCommerce', 'PHP', 'UI UX'],
+    id: 1,
+    title: 'AutoPlug',
+    description:
+      'Telegram broadcaster dashboard — session management, group targeting, and real-time delivery status tracking.',
+    tech: ['React', 'Next.js', 'Tailwind CSS', 'Telegram API'],
     image: project1Image,
+    liveUrl: 'https://telegram-broadcaster-dashboard.vercel.app/',
+    githubUrl: null,
   },
   {
-    title: 'Risk Analytics for Adolescents',
-    description: 'A capstone analytics dashboard for identifying adolescent risk patterns through clear charts and actionable insights.',
-    tech: ['Python', 'Data Analytics', 'Dashboard', 'Research'],
+    id: 2,
+    title: 'OTP-SaaS',
+    description:
+      'SaaS OTP generation and verification platform — secure, real-time, and API-ready for developer integration.',
+    tech: ['React', 'Node.js', 'Tailwind CSS', 'API'],
     image: project2Image,
-  },
-  {
-    title: 'Netflix Device Verification',
-    description: 'A verification flow concept for validating household devices and simplifying access control for streaming users.',
-    tech: ['Vue', 'UX Flow', 'Verification', 'Responsive UI'],
-    image: project3Image,
+    liveUrl: 'https://otp-saas.vercel.app/',
+    githubUrl: null,
   },
 ]
 
 export const skillGroups = [
   {
-    title: 'Core',
-    skills: ['HTML', 'CSS', 'JavaScript', 'PHP', 'Git'],
+    id: 'frontend',
+    label: 'Frontend',
+    skills: ['HTML5', 'CSS3', 'JS ES6+', 'React', 'Vue', 'Tailwind', 'Bootstrap', 'WordPress'],
   },
   {
-    title: 'Frameworks',
-    skills: ['Laravel', 'WordPress', 'Vue', 'Flutter', 'Bootstrap'],
+    id: 'backend',
+    label: 'Backend',
+    skills: ['PHP', 'Laravel', 'Python', 'NGINX', 'Docker'],
   },
   {
-    title: 'UI, DevOps, AI',
-    skills: ['Tailwind', 'Docker', 'Python', 'UI UX', 'AI'],
+    id: 'databases',
+    label: 'Databases',
+    skills: ['MySQL', 'PostgreSQL', 'SQL'],
+  },
+  {
+    id: 'tools',
+    label: 'Tools & AI',
+    skills: ['Git', 'Figma', 'Prompt Engineering', 'AI Tools', 'Flutter'],
+  },
+]
+
+export const experiences = [
+  {
+    id: 1,
+    role: 'Software Engineer',
+    context: 'Custom WordPress Theme',
+    company: 'Company Website',
+    period: 'March 2026',
+    description:
+      'Built a custom WordPress theme from scratch with responsive layouts and an SEO-friendly architecture.',
+    tech: ['PHP', 'HTML5', 'CSS3', 'JavaScript', 'Tailwind', 'Bootstrap', 'WordPress'],
+  },
+  {
+    id: 2,
+    role: 'Software Engineering Intern',
+    context: 'WordPress Themes',
+    company: 'Thy Web Development Inc.',
+    period: 'January 2026',
+    description:
+      'Built reusable components using PHP, SCSS, and JavaScript. Worked with the WordPress template hierarchy and contributed to UI/UX and performance improvements.',
+    tech: ['PHP', 'SCSS', 'JavaScript', 'WordPress'],
+  },
+  {
+    id: 3,
+    role: 'Software Developer',
+    context: 'Risk Analytics for Adolescents',
+    company: 'POPCOM Capstone',
+    period: 'August 2025',
+    description:
+      'Trained an AI model on real-world datasets. Handled data preprocessing, feature engineering, and model evaluation.',
+    tech: ['Python', 'AI/ML', 'Data Analytics', 'Pandas'],
   },
 ]
