@@ -1,4 +1,4 @@
-import profileImage from '../assets/images/profile.JPG'
+import profileImage from '../assets/images/profile.jpg'
 
 const STATS = [
   { value: '3+', label: 'Years Exp.' },
