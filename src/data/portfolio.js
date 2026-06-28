@@ -9,7 +9,7 @@ export const projects = [
       'Telegram broadcaster dashboard — session management, group targeting, and real-time delivery status tracking.',
     tech: ['React', 'Next.js', 'Tailwind CSS', 'Telegram API'],
     image: project1Image,
-    liveUrl: 'https://telegram-broadcaster-dashboard.vercel.app/',
+    liveUrl: 'https://siofrappeservices.vercel.app/',
     githubUrl: null,
   },
   {
