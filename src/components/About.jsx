@@ -3,7 +3,7 @@ import profileImage from '../assets/images/profile.jpg'
 const STATS = [
   { value: '3+', label: 'Years Exp.' },
   { value: '20+', label: 'Projects' },
-  { value: '5+', label: 'Technologies' },
+  { value: '20+', label: 'Technologies' },
   { value: '2', label: 'Live Apps' },
 ]
 
@@ -22,6 +22,8 @@ export default function About() {
               <img
                 src={profileImage}
                 alt="Adrian Lylle Bona"
+                width="240"
+                height="288"
                 className="w-full h-full object-cover object-top"
               />
             </div>

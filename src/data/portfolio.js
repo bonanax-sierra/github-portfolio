@@ -50,16 +50,6 @@ export const skillGroups = [
 export const experiences = [
   {
     id: 1,
-    role: 'Software Engineer',
-    context: 'Custom WordPress Theme',
-    company: 'Company Website',
-    period: 'March 2026',
-    description:
-      'Built a custom WordPress theme from scratch with responsive layouts and an SEO-friendly architecture.',
-    tech: ['PHP', 'HTML5', 'CSS3', 'JavaScript', 'Tailwind', 'Bootstrap', 'WordPress'],
-  },
-  {
-    id: 2,
     role: 'Software Engineering Intern',
     context: 'WordPress Themes',
     company: 'Thy Web Development Inc.',
@@ -69,7 +59,7 @@ export const experiences = [
     tech: ['PHP', 'SCSS', 'JavaScript', 'WordPress'],
   },
   {
-    id: 3,
+    id: 2,
     role: 'Software Developer',
     context: 'Risk Analytics for Adolescents',
     company: 'POPCOM Capstone',

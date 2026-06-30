@@ -1,5 +1,9 @@
 import { useState } from 'react'
 
+// NOTE: Replace VITE_FORMSPREE_ID in .env with your form ID from formspree.io
+// Free tier: 50 submissions/month. Sign up → New Form → copy the ID (e.g. "xpzgkwqr")
+const FORMSPREE_URL = `https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_ID ?? 'YOUR_FORM_ID'}`
+
 function ArrowRightIcon() {
   return (
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -58,24 +62,38 @@ function validate(form) {
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [errors, setErrors] = useState({})
+  const [submitStatus, setSubmitStatus] = useState('idle') // 'idle' | 'loading' | 'success' | 'error'
 
   const set = (field) => (e) => {
     setForm((p) => ({ ...p, [field]: e.target.value }))
     if (errors[field]) setErrors((p) => ({ ...p, [field]: undefined }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const errs = validate(form)
     if (Object.keys(errs).length) {
       setErrors(errs)
       return
     }
-    const subject = encodeURIComponent(`Portfolio contact from ${form.name}`)
-    const body = encodeURIComponent(
-      `Hi Adrian,\n\n${form.message}\n\nBest,\n${form.name}\n${form.email}`
-    )
-    window.location.href = `mailto:bonanaxbona@gmail.com?subject=${subject}&body=${body}`
+
+    setSubmitStatus('loading')
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        body: JSON.stringify(form),
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      })
+      if (res.ok) {
+        setSubmitStatus('success')
+        setForm({ name: '', email: '', message: '' })
+        setErrors({})
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch {
+      setSubmitStatus('error')
+    }
   }
 
   return (
@@ -91,14 +109,27 @@ export default function Contact() {
 
           {/* Form */}
           <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+            {submitStatus === 'success' && (
+              <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-sm text-green-800 dark:text-green-300">
+                Message sent — I'll get back to you within 24 hours.
+              </div>
+            )}
+            {submitStatus === 'error' && (
+              <div className="p-4 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-sm text-red-700 dark:text-red-300">
+                Something went wrong. Try emailing me directly at bonanaxbona@gmail.com.
+              </div>
+            )}
+
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Name</label>
               <input
                 type="text"
+                name="name"
                 value={form.name}
                 onChange={set('name')}
                 placeholder="Your name"
                 className="input-field"
+                disabled={submitStatus === 'loading'}
               />
               {errors.name && <p className="text-xs text-red-500 mt-1.5">{errors.name}</p>}
             </div>
@@ -107,10 +138,12 @@ export default function Contact() {
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Email</label>
               <input
                 type="email"
+                name="email"
                 value={form.email}
                 onChange={set('email')}
                 placeholder="your@email.com"
                 className="input-field"
+                disabled={submitStatus === 'loading'}
               />
               {errors.email && <p className="text-xs text-red-500 mt-1.5">{errors.email}</p>}
             </div>
@@ -118,17 +151,26 @@ export default function Contact() {
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Message</label>
               <textarea
+                name="message"
                 value={form.message}
                 onChange={set('message')}
                 placeholder="Tell me about your project or opportunity..."
                 rows={5}
                 className="input-field resize-none"
+                disabled={submitStatus === 'loading'}
               />
               {errors.message && <p className="text-xs text-red-500 mt-1.5">{errors.message}</p>}
             </div>
 
             <div>
-              <button type="submit" className="btn-primary">Send Message</button>
+              <button
+                type="submit"
+                className="btn-primary"
+                disabled={submitStatus === 'loading'}
+                style={{ opacity: submitStatus === 'loading' ? 0.6 : 1 }}
+              >
+                {submitStatus === 'loading' ? 'Sending…' : 'Send Message'}
+              </button>
             </div>
 
             {/* Social links — below form */}
